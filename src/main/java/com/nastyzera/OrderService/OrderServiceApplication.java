@@ -17,6 +17,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.nastyzera.OrderService.external.intercept.RestTemplateInterceptor;
 
+
+
+
 @SpringBootApplication
 @EnableFeignClients
 public class OrderServiceApplication {

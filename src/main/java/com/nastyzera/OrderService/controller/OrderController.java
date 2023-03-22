@@ -25,7 +25,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @PreAuthorize("hasAuthority('Customer')")
+    @PreAuthorize("hasAuthority('Customer') || hasAuthority('SCOPE_internal')")
     @PostMapping("/placeOrder")
     public ResponseEntity<Long> placeOrder(@RequestBody OrderRequest orderRequest) {
         // save data with order created
@@ -38,7 +38,7 @@ public class OrderController {
         return new ResponseEntity<>(orderId, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAuthority('Admin') || hasAuthority('Customer')")
+    @PreAuthorize("hasAuthority('Admin') || hasAuthority('Customer') || hasAuthority('SCOPE_internal')")
     @GetMapping("/{orderId}")
     public ResponseEntity<OrderResponse> getOrderDetails(@PathVariable long orderId) {
         OrderResponse orderResponse

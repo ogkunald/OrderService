@@ -15,7 +15,7 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 @CircuitBreaker(name = "external", fallbackMethod = "fallback")
 @FeignClient(name = "PRODUCT-SERVICE/product")
 public interface ProductService {
-
+        
         @PutMapping("/reduceQuantity/{id}")
         public ResponseEntity<Void> reduceQuantity(
                         @PathVariable("id") long productId,
